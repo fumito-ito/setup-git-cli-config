@@ -1,0 +1,37 @@
+name: 'Setup Git Config'
+description: 'Configure git user settings and authentication for GitHub Actions'
+author: 'fumito-ito'
+
+inputs:
+  user-name:
+    description: 'Git user name to be set via git config user.name'
+    required: false
+    default: 'github-actions[bot]'
+  user-email:
+    description: 'Git user email to be set via git config user.email'
+    required: false
+    default: '41898282+github-actions[bot]@users.noreply.github.com'
+  token:
+    description: 'GitHub token for authentication. This will override http.https://github.com/.extraheader'
+    required: false
+    default: '${{ github.token }}'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Configure Git User
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.user-name }}"
+        git config user.email "${{ inputs.user-email }}"
+        
+    - name: Configure Git Authentication
+      shell: bash
+      run: |
+        NEW_TOKEN="${{ inputs.token }}"
+        NEW_AUTH="AUTHORIZATION: basic $(echo -n "x-access-token:$NEW_TOKEN" | base64)"
+        git config http.https://github.com/.extraheader "$NEW_AUTH"
+
+branding:
+  icon: 'git-branch'
+  color: 'blue'
