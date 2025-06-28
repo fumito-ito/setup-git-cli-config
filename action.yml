@@ -27,10 +27,7 @@ runs:
         
     - name: Configure Git Authentication
       shell: bash
-      run: |
-        NEW_TOKEN="${{ inputs.token }}"
-        NEW_AUTH="AUTHORIZATION: basic $(echo -n "x-access-token:$NEW_TOKEN" | base64)"
-        git config http.https://github.com/.extraheader "$NEW_AUTH"
+      run: git config http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n "x-access-token:${{ inputs.token }}" | base64)"
 
 branding:
   icon: 'git-branch'
