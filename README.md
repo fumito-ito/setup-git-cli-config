@@ -48,7 +48,7 @@ A custom GitHub Action for configuring Git settings in GitHub Actions workflows.
 ```yaml
 steps:
   - uses: actions/checkout@v4
-  - uses: fumito-ito/set-up-git-config@v0.0.1
+  - uses: fumito-ito/set-up-git-cli-config@v0.0.1
 ```
 
 ### Custom Configuration
@@ -56,7 +56,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v4
-  - uses: fumito-ito/set-up-git-config@v0.0.1
+  - uses: fumito-ito/set-up-git-cli-config@v0.0.1
     with:
       user-name: 'actions-user'
       user-email: '65916846+actions-user@users.noreply.github.com'
@@ -68,7 +68,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v4
-  - uses: fumito-ito/set-up-git-config@v0.0.1
+  - uses: fumito-ito/set-up-git-cli-config@v0.0.1
     with:
       user-name: 'my-bot'
       user-email: 'my-bot@example.com'

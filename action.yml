@@ -1,4 +1,4 @@
-name: 'Setup Git Config'
+name: 'Setup Git CLI Config'
 description: 'Configure git user settings and authentication for GitHub Actions'
 author: 'fumito-ito'
 
